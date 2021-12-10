@@ -6,4 +6,8 @@ export class ExternalObject<T> {
     [K: symbol]: T
   }
 }
-export function plus100(input: number): number
+export interface Options {
+  timeout?: number | undefined | null
+  idleTimeout?: number | undefined | null
+}
+export function exec(cmd: string, opts?: Options | undefined | null, callback: (...args: any[]) => any): void

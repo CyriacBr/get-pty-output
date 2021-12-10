@@ -93,14 +93,14 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@napi-rs/cli@^2.0.0-beta.5":
+"cli@^2.0.0-beta.5":
   version "2.0.0-beta.5"
-  resolved "https://registry.npmjs.org/@napi-rs/cli/-/cli-2.0.0-beta.5.tgz#0bc92c3a5d865f667f294d14a967bdb487987d14"
+  resolved "https://registry.npmjs.org/cli/-/cli-2.0.0-beta.5.tgz#0bc92c3a5d865f667f294d14a967bdb487987d14"
   integrity sha512-/t7T52f2PEOcQXXbnmUZKKwAGIIU8mj2a1gwWR6Vo8wJeAzKXFrfQ5wx1Y/56E1vYRcRrGyDatDTBEQc7omwdw==
 
-"@napi-rs/triples@^1.0.3":
+"triples@^1.0.3":
   version "1.1.0"
-  resolved "https://registry.npmjs.org/@napi-rs/triples/-/triples-1.1.0.tgz#88c35b72e79a20b79bb4c9b3e2817241a1c9f4f9"
+  resolved "https://registry.npmjs.org/triples/-/triples-1.1.0.tgz#88c35b72e79a20b79bb4c9b3e2817241a1c9f4f9"
   integrity sha512-XQr74QaLeMiqhStEhLn1im9EOMnkypp7MZOwQhGzqp2Weu5eQJbpPxWxixxlYRKWPOmJjsk6qYfYH9kq43yc2w==
 
 "@node-rs/helper@^1.0.0", "@node-rs/helper@^1.2.1":
@@ -108,7 +108,7 @@
   resolved "https://registry.npmjs.org/@node-rs/helper/-/helper-1.2.1.tgz#e079b05f21ff4329d82c4e1f71c0290e4ecdc70c"
   integrity sha512-R5wEmm8nbuQU0YGGmYVjEc0OHtYsuXdpRG+Ut/3wZ9XAvQWyThN08bTh2cBJgoZxHQUPtvRfeQuxcAgLuiBISg==
   dependencies:
-    "@napi-rs/triples" "^1.0.3"
+    "triples" "^1.0.3"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

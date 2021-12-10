@@ -1,3 +1,3 @@
-# `@napi-rs/package-template-freebsd-x64`
+# `get-pty-output-freebsd-x64`
 
-This is the **x86_64-unknown-freebsd** binary for `@napi-rs/package-template`
+This is the **x86_64-unknown-freebsd** binary for `get-pty-output`

@@ -1,13 +1,13 @@
-# `@napi-rs/package-template`
+# `get-pty-output`
 
-![https://github.com/napi-rs/package-template/actions](https://github.com/napi-rs/package-template/workflows/CI/badge.svg)
+![https://github.com/napi-rs/get-pty-output/actions](https://github.com/napi-rs/get-pty-output/workflows/CI/badge.svg)
 
 > Template project for writing node package with napi-rs.
 
 ## Install this test package
 
 ```
-yarn add @napi-rs/package-template
+yarn add get-pty-output
 ```
 
 ## Support matrix
@@ -33,7 +33,7 @@ yarn add @napi-rs/package-template
 
 ### Build
 
-After `yarn build/npm run build` command, you can see `package-template.[darwin|win32|linux].node` file in project root. This is the native addon built from [lib.rs](./src/lib.rs).
+After `yarn build/npm run build` command, you can see `get-pty-output.[darwin|win32|linux].node` file in project root. This is the native addon built from [lib.rs](./src/lib.rs).
 
 ### Test
 
@@ -53,7 +53,7 @@ The other problem is how to deliver prebuild `binary` to users. Download it in `
 
 In this package we choose a better way to solve this problem. We release different `npm packages` for different platform. And add it to `optionalDependencies` before release the `Major` package to npm.
 
-`NPM` will choose which native package should download from `registry` automatically. You can see [npm](./npm) dir for details. And you can also run `yarn add @napi-rs/package-template` to see how it works.
+`NPM` will choose which native package should download from `registry` automatically. You can see [npm](./npm) dir for details. And you can also run `yarn add get-pty-output` to see how it works.
 
 ## Develop requirements
 
