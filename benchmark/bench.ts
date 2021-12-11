@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import b from 'benny'
 
 function add(a: number) {

@@ -1,17 +1,13 @@
 {
   "name": "get-pty-output",
-  "version": "1.0.0",
-  "description": "Template project for writing node package with napi-rs",
+  "version": "0.5.0",
+  "description": "Execute an external command with a PTY, from Node ",
   "main": "index.js",
-  "repository": "git@github.com:napi-rs/get-pty-output.git",
+  "repository": "git@github.com:CyriacBr/get-pty-output.git",
   "license": "MIT",
   "keywords": [
-    "napi-rs",
-    "NAPI",
-    "N-API",
-    "Rust",
-    "node-addon",
-    "node-addon-api"
+    "node",
+    "pty"
   ],
   "files": [
     "index.d.ts",
@@ -45,19 +41,20 @@
   "scripts": {
     "artifacts": "napi artifacts",
     "bench": "node -r @swc-node/register benchmark/bench.ts",
-    "build": "napi build --platform --release --pipe \"prettier -w\"",
-    "build:debug": "napi build --platform --pipe \"prettier -w\"",
+    "build": "napi build --platform --release --js lib.js --dts lib.d.ts",
+    "build:debug": "napi build --platform --js lib.js --dts lib.d.ts",
     "format": "run-p format:prettier format:rs",
     "format:prettier": "prettier . -w",
     "format:rs": "cargo fmt",
     "lint": "eslint . -c ./.eslintrc.yml",
-    "prepublishOnly": "napi prepublish -t npm",
+    "prepublishOnly": "napi prepublish -t npm --skip-gh-release",
     "test": "ava",
     "version": "napi version"
   },
   "devDependencies": {
-    "cli": "^2.0.0-beta.5",
+    "@napi-rs/cli": "^2.0.0-beta.5",
     "@swc-node/register": "^1.4.0",
+    "@types/node": "^16.11.12",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
     "ava": "^3.15.0",
@@ -70,6 +67,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "npm-run-all": "^4.1.5",
+    "ora": "5",
     "prettier": "^2.5.1",
     "typescript": "^4.5.3"
   },
@@ -108,5 +106,20 @@
     "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
+  },
+  "optionalDependencies": {
+    "get-pty-output-win32-x64-msvc": "0.5.0",
+    "get-pty-output-darwin-x64": "0.5.0",
+    "get-pty-output-linux-x64-gnu": "0.5.0",
+    "get-pty-output-linux-x64-musl": "0.5.0",
+    "get-pty-output-linux-arm64-gnu": "0.5.0",
+    "get-pty-output-win32-ia32-msvc": "0.5.0",
+    "get-pty-output-linux-arm-gnueabihf": "0.5.0",
+    "get-pty-output-darwin-arm64": "0.5.0",
+    "get-pty-output-android-arm64": "0.5.0",
+    "get-pty-output-freebsd-x64": "0.5.0",
+    "get-pty-output-linux-arm64-musl": "0.5.0",
+    "get-pty-output-win32-arm64-msvc": "0.5.0",
+    "get-pty-output-android-arm-eabi": "0.5.0"
   }
 }

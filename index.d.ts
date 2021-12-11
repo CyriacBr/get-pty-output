@@ -1,13 +1,9 @@
-/* eslint-disable */
-
-export class ExternalObject<T> {
-  readonly '': {
-    readonly '': unique symbol
-    [K: symbol]: T
-  }
-}
 export interface Options {
   timeout?: number | undefined | null
-  idleTimeout?: number | undefined | null
+  cwd?: string | undefined | null
 }
-export function exec(cmd: string, opts?: Options | undefined | null, callback: (...args: any[]) => any): void
+export interface ReturnType {
+  output: string
+  truncated: boolean
+}
+export function exec(cmd: string, opts?: Options): Promise<ReturnType>
