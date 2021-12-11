@@ -192,6 +192,8 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { exec } = nativeBinding
+const { exec, exec2, exec3 } = nativeBinding
 
 module.exports.exec = exec
+module.exports.exec2 = exec2
+module.exports.exec3 = exec3
