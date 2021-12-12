@@ -38,7 +38,7 @@ pub fn exec(cmd: String, opts: Options, callback: JsFunction) -> Result<()> {
     })?;
 
   let pty_system = native_pty_system();
-  let mut pair = pty_system
+  let pair = pty_system
     .openpty(PtySize {
       rows: 24,
       cols: 80,
@@ -46,17 +46,16 @@ pub fn exec(cmd: String, opts: Options, callback: JsFunction) -> Result<()> {
       pixel_height: 0,
     })
     .expect("Failed to create PTY");
-  print!("pty created");
 
   let args = shellwords::split(&cmd).unwrap();
-  let mut cmd =
-    CommandBuilder::from_argv(args.iter().map(|v| std::ffi::OsString::from(v)).collect());
+  let mut cmd = CommandBuilder::from_argv(args.iter().map(std::ffi::OsString::from).collect());
   cmd.cwd(cwd);
 
   let mut child = pair
     .slave
     .spawn_command(cmd)
     .expect("Failed to spawn command");
+  child.wait().unwrap();
   drop(pair.slave);
 
   let box_reader = pair
@@ -91,10 +90,41 @@ pub fn exec(cmd: String, opts: Options, callback: JsFunction) -> Result<()> {
     );
   } else {
     tsfn.call(
-      Err(Error::new(Status::Unknown, output.to_owned())),
+      Err(Error::new(Status::Unknown, output)),
       ThreadsafeFunctionCallMode::Blocking,
     );
   }
 
   Ok(())
+}
+
+#[napi]
+pub fn test() -> String {
+  let pty_system = native_pty_system();
+
+  // Create a new pty
+  let mut pair = pty_system
+    .openpty(PtySize {
+      rows: 24,
+      cols: 80,
+      pixel_width: 0,
+      pixel_height: 0,
+    })
+    .expect("err");
+
+  // Spawn a shell into the pty
+  let cmd = CommandBuilder::new("ls");
+  let mut child = pair.slave.spawn_command(cmd).expect("err");
+  child.wait().unwrap();
+  drop(pair.slave);
+
+  // Read and parse output from the pty with reader
+  let mut reader = pair.master.try_clone_reader().expect("err");
+  drop(pair.master);
+
+  let mut buffer = Vec::new();
+  reader.read_to_end(&mut buffer).expect("err");
+
+  String::from(std::str::from_utf8(&buffer).unwrap())
+  // String::from("hello world")
 }

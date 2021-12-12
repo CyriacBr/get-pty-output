@@ -1,0 +1,12 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <JSCodeStyleSettings version="0">
+      <option name="ENFORCE_TRAILING_COMMA" value="WhenMultiline" />
+      <option name="VAR_DECLARATION_WRAP" value="2" />
+    </JSCodeStyleSettings>
+    <TypeScriptCodeStyleSettings version="0">
+      <option name="ENFORCE_TRAILING_COMMA" value="WhenMultiline" />
+      <option name="VAR_DECLARATION_WRAP" value="2" />
+    </TypeScriptCodeStyleSettings>
+  </code_scheme>
+</component>

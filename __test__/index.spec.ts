@@ -12,7 +12,7 @@ test('output can be captured', async (t) => {
   t.is(res.output.trim(), 'hey')
 })
 
-test('colors are captured', async (t) => {
+test.skip('colors are captured', async (t) => {
   const res = await exec('node -e console.log(100)')
   t.is(res.output.trim(), formatWithOptions({ colors: true }, 100))
 })

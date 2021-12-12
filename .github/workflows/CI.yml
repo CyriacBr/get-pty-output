@@ -30,15 +30,15 @@ jobs:
               yarn build
               strip -x *.node
           - host: windows-latest
-            build: yarn build
+            build: yarn build --target x86_64-pc-windows-msvc
             target: x86_64-pc-windows-msvc
             architecture: x64
-          - host: windows-latest
-            build: |
-              yarn build --target i686-pc-windows-msvc
-              yarn test
-            target: i686-pc-windows-msvc
-            architecture: x86
+#          - host: windows-latest
+#            build: |
+#              yarn build --target i686-pc-windows-msvc
+#              yarn test
+#            target: i686-pc-windows-msvc
+#            architecture: x86
           - host: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             architecture: x64
@@ -77,26 +77,26 @@ jobs:
             build: |
               yarn build --target=armv7-unknown-linux-gnueabihf
               arm-linux-gnueabihf-strip *.node
-          - host: ubuntu-latest
-            architecture: x64
-            target: aarch64-linux-android
-            build: |
-              export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang"
-              export CC="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang"
-              export CXX="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang++"
-              export PATH="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin:${PATH}"
-              yarn build --target aarch64-linux-android
-              ${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android-strip *.node
-          - host: ubuntu-latest
-            architecture: x64
-            target: armv7-linux-androideabi
-            build: |
-              export CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang"
-              export CC="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang"
-              export CXX="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang++"
-              export PATH="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin:${PATH}"
-              yarn build --target armv7-linux-androideabi
-              ${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip *.node
+          # - host: ubuntu-latest
+          #   architecture: x64
+          #   target: aarch64-linux-android
+          #   build: |
+          #     export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang"
+          #     export CC="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang"
+          #     export CXX="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang++"
+          #     export PATH="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin:${PATH}"
+          #     yarn build --target aarch64-linux-android
+          #     ${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android-strip *.node
+          # - host: ubuntu-latest
+          #   architecture: x64
+          #   target: armv7-linux-androideabi
+          #   build: |
+          #     export CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang"
+          #     export CC="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang"
+          #     export CXX="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang++"
+          #     export PATH="${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin:${PATH}"
+          #     yarn build --target armv7-linux-androideabi
+          #     ${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip *.node
           - host: ubuntu-latest
             architecture: x64
             target: aarch64-unknown-linux-musl

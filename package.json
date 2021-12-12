@@ -18,16 +18,15 @@
     "triples": {
       "defaults": true,
       "additional": [
-        "x86_64-unknown-linux-musl",
-        "aarch64-unknown-linux-gnu",
         "i686-pc-windows-msvc",
         "armv7-unknown-linux-gnueabihf",
+        "x86_64-unknown-linux-musl",
+        "aarch64-unknown-linux-gnu",
         "aarch64-apple-darwin",
         "aarch64-linux-android",
         "x86_64-unknown-freebsd",
         "aarch64-unknown-linux-musl",
-        "aarch64-pc-windows-msvc",
-        "armv7-linux-androideabi"
+        "aarch64-pc-windows-msvc"
       ]
     }
   },
@@ -46,7 +45,7 @@
     "format": "run-p format:prettier format:rs",
     "format:prettier": "prettier . -w",
     "format:rs": "cargo fmt",
-    "lint": "eslint . -c ./.eslintrc.yml",
+    "lint": "eslint . -c ./.eslintrc.yml --fix && cargo clippy",
     "prepublishOnly": "napi prepublish -t npm --skip-gh-release",
     "test": "ava",
     "version": "napi version"
@@ -106,20 +105,5 @@
     "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
-  },
-  "optionalDependencies": {
-    "get-pty-output-win32-x64-msvc": "0.5.0",
-    "get-pty-output-darwin-x64": "0.5.0",
-    "get-pty-output-linux-x64-gnu": "0.5.0",
-    "get-pty-output-linux-x64-musl": "0.5.0",
-    "get-pty-output-linux-arm64-gnu": "0.5.0",
-    "get-pty-output-win32-ia32-msvc": "0.5.0",
-    "get-pty-output-linux-arm-gnueabihf": "0.5.0",
-    "get-pty-output-darwin-arm64": "0.5.0",
-    "get-pty-output-android-arm64": "0.5.0",
-    "get-pty-output-freebsd-x64": "0.5.0",
-    "get-pty-output-linux-arm64-musl": "0.5.0",
-    "get-pty-output-win32-arm64-msvc": "0.5.0",
-    "get-pty-output-android-arm-eabi": "0.5.0"
   }
 }
