@@ -9,7 +9,7 @@ with `child_process.spawn` or `exec`, ansi colors are lost because most of CLIs 
 You can make your child inherit the parent `stdio`, thus allowing colors, but this results in the inability to properly capture outputs.
 
 Some packages like `node-pty` aim to solve this problem, but they rely on `node-gyp`, and doesn't support newer Node versions.
-This package leverage Rust's `portable-pty` crate with [n-api-rs](https://github.com/napi-rs/napi-rs) for bindings, allowing way better
+This package leverage Rust's `portable-pty`(unix) and `conpty`(windows) crates with [n-api-rs](https://github.com/napi-rs/napi-rs) for bindings, allowing way better
 cross-platform support and easier installation.
 
 ## Install
@@ -48,3 +48,4 @@ exec(cmd, {
 
 - [n-api-rs](https://github.com/napi-rs/napi-rs)
 - [portable-pty](https://docs.rs/portable-pty/latest/portable_pty/)
+- [conpty](https://github.com/zhiburt/conpty)
