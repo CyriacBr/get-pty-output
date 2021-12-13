@@ -14,7 +14,7 @@ pub struct Options {
 #[cfg(not(windows))]
 #[napi]
 pub fn exec(cmd: String, opts: Options, callback: JsFunction) -> Result<()> {
-  use portable_pty::{native_pty_system, CommandBuilder, NativePtySystem, PtySize, PtySystem};
+  use portable_pty::{native_pty_system, CommandBuilder, PtySize};
   use std::time::Instant;
 
   let timeout: u32 = match opts.timeout {
@@ -57,7 +57,6 @@ pub fn exec(cmd: String, opts: Options, callback: JsFunction) -> Result<()> {
     .slave
     .spawn_command(cmd)
     .expect("Failed to spawn command");
-  child.wait().unwrap();
   drop(pair.slave);
 
   let box_reader = pair
