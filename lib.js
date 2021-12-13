@@ -27,9 +27,7 @@ switch (platform) {
   case 'win32':
     switch (arch) {
       case 'x64':
-        localFileExisted = existsSync(
-          join(__dirname, 'get-pty-output.win32-x64-msvc.node')
-        )
+        localFileExisted = existsSync(join(__dirname, 'get-pty-output.win32-x64-msvc.node'))
         try {
           if (localFileExisted) {
             nativeBinding = require('./get-pty-output.win32-x64-msvc.node')
@@ -41,9 +39,7 @@ switch (platform) {
         }
         break
       case 'ia32':
-        localFileExisted = existsSync(
-          join(__dirname, 'get-pty-output.win32-ia32-msvc.node')
-        )
+        localFileExisted = existsSync(join(__dirname, 'get-pty-output.win32-ia32-msvc.node'))
         try {
           if (localFileExisted) {
             nativeBinding = require('./get-pty-output.win32-ia32-msvc.node')
@@ -55,9 +51,7 @@ switch (platform) {
         }
         break
       case 'arm64':
-        localFileExisted = existsSync(
-          join(__dirname, 'get-pty-output.win32-arm64-msvc.node')
-        )
+        localFileExisted = existsSync(join(__dirname, 'get-pty-output.win32-arm64-msvc.node'))
         try {
           if (localFileExisted) {
             nativeBinding = require('./get-pty-output.win32-arm64-msvc.node')
@@ -87,9 +81,7 @@ switch (platform) {
         }
         break
       case 'arm64':
-        localFileExisted = existsSync(
-          join(__dirname, 'get-pty-output.darwin-arm64.node')
-        )
+        localFileExisted = existsSync(join(__dirname, 'get-pty-output.darwin-arm64.node'))
         try {
           if (localFileExisted) {
             nativeBinding = require('./get-pty-output.darwin-arm64.node')
@@ -124,9 +116,7 @@ switch (platform) {
       case 'x64':
         isMusl = readFileSync('/usr/bin/ldd', 'utf8').includes('musl')
         if (isMusl) {
-          localFileExisted = existsSync(
-            join(__dirname, 'get-pty-output.linux-x64-musl.node')
-          )
+          localFileExisted = existsSync(join(__dirname, 'get-pty-output.linux-x64-musl.node'))
           try {
             if (localFileExisted) {
               nativeBinding = require('./get-pty-output.linux-x64-musl.node')
@@ -137,9 +127,7 @@ switch (platform) {
             loadError = e
           }
         } else {
-          localFileExisted = existsSync(
-            join(__dirname, 'get-pty-output.linux-x64-gnu.node')
-          )
+          localFileExisted = existsSync(join(__dirname, 'get-pty-output.linux-x64-gnu.node'))
           try {
             if (localFileExisted) {
               nativeBinding = require('./get-pty-output.linux-x64-gnu.node')
@@ -154,9 +142,7 @@ switch (platform) {
       case 'arm64':
         isMusl = readFileSync('/usr/bin/ldd', 'utf8').includes('musl')
         if (isMusl) {
-          localFileExisted = existsSync(
-            join(__dirname, 'get-pty-output.linux-arm64-musl.node')
-          )
+          localFileExisted = existsSync(join(__dirname, 'get-pty-output.linux-arm64-musl.node'))
           try {
             if (localFileExisted) {
               nativeBinding = require('./get-pty-output.linux-arm64-musl.node')
@@ -167,9 +153,7 @@ switch (platform) {
             loadError = e
           }
         } else {
-          localFileExisted = existsSync(
-            join(__dirname, 'get-pty-output.linux-arm64-gnu.node')
-          )
+          localFileExisted = existsSync(join(__dirname, 'get-pty-output.linux-arm64-gnu.node'))
           try {
             if (localFileExisted) {
               nativeBinding = require('./get-pty-output.linux-arm64-gnu.node')
@@ -182,9 +166,7 @@ switch (platform) {
         }
         break
       case 'arm':
-        localFileExisted = existsSync(
-          join(__dirname, 'get-pty-output.linux-arm-gnueabihf.node')
-        )
+        localFileExisted = existsSync(join(__dirname, 'get-pty-output.linux-arm-gnueabihf.node'))
         try {
           if (localFileExisted) {
             nativeBinding = require('./get-pty-output.linux-arm-gnueabihf.node')
@@ -210,7 +192,6 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { exec, test } = nativeBinding
+const { exec } = nativeBinding
 
 module.exports.exec = exec
-module.exports.test = test

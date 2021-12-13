@@ -11,4 +11,3 @@ export interface Options {
   cwd?: string | undefined | null
 }
 export function exec(cmd: string, opts: Options, callback: (...args: any[]) => any): void
-export function test(): string
