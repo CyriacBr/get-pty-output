@@ -36,6 +36,14 @@ exec(cmd, {
 })
 ```
 
+## Publishing (note for self)
+
+* Remove all optional deps
+* Push or manually start CI workflow
+* Download CI artifacts and put them under ./npm in their respective directory
+* Bump version if needed
+* Run `npm publish`
+
 ## Credits & Thanks
 
 - [n-api-rs](https://github.com/napi-rs/napi-rs)
