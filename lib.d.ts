@@ -10,4 +10,9 @@ export interface Options {
   timeout?: number | undefined | null
   cwd?: string | undefined | null
 }
+export interface Result {
+  output: string
+  truncated: boolean
+}
 export function exec(cmd: string, opts: Options, callback: (...args: any[]) => any): void
+export function execSync(cmd: string, opts: Options): any | undefined | null

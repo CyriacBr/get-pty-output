@@ -5,12 +5,13 @@
 
 import test from 'tape'
 
-import { exec } from '../index'
+import { exec, execSync } from '../index'
 
 // const cwd = Path.join(process.cwd(), './__test__')
 
 test('binding exists', async (t) => {
   t.ok(exec)
+  t.ok(execSync)
 })
 
 // test('output can be captured', async (t) => {

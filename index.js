@@ -1,11 +1,5 @@
-const { exec } = require('./lib')
+const { exec, execSync } = require('./lib')
 
-/**
- * Execute a command and return it's output
- * @param {string} cmd
- * @param {import('./index').Options} opts
- * @returns {Promise<import('./index').ReturnType>}
- */
 function execPromise(cmd, opts) {
   return new Promise((resolve, reject) => {
     exec(cmd, opts || {}, (err, res) => {
@@ -19,3 +13,4 @@ function execPromise(cmd, opts) {
 }
 
 module.exports.exec = execPromise
+module.exports.execSync = execSync

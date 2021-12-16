@@ -210,6 +210,7 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { exec } = nativeBinding
+const { exec, execSync } = nativeBinding
 
 module.exports.exec = exec
+module.exports.execSync = execSync

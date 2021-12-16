@@ -1582,6 +1582,51 @@ get-package-type@^0.1.0:
   resolved "https://registry.yarnpkg.com/get-package-type/-/get-package-type-0.1.0.tgz#8de2d803cff44df3bc6c456e6668b36c3926e11a"
   integrity sha512-pjzuKtY64GYfWizNAJ0fr9VqttZkNiK2iS430LtIHzjBEr6bX8Am2zm4sW4Ro5wjWW5cAlRL1qAMTcXbjNAO2Q==
 
+get-pty-output-darwin-arm64@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/get-pty-output-darwin-arm64/-/get-pty-output-darwin-arm64-0.6.2.tgz#d47525d9b3ac1aa970214e0eb46768407b00c80a"
+  integrity sha512-cTinWiBhmp07E1FCHGg8KJMEpPgfb2G/kullpv7X8zLAbJYd00xU1w2apnWyaexRBtDiE1oZPk5aAdIIYPfNcQ==
+
+get-pty-output-darwin-x64@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/get-pty-output-darwin-x64/-/get-pty-output-darwin-x64-0.6.2.tgz#7698b4494227cd7ab48c6dfa167b94be3cd6dcb6"
+  integrity sha512-aTo8Cl9ymlflJ2UEWGCWoJnznRa7mSb8Iv7NXKELo/ttubVRoc8Yr9HNf140Z23jrOx/C7NVVVEDx68XtgOByw==
+
+get-pty-output-freebsd-x64@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/get-pty-output-freebsd-x64/-/get-pty-output-freebsd-x64-0.6.2.tgz#6d4923f4fe8c4d4b1d009ddb8436a65329c38aaf"
+  integrity sha512-TNw/ynV/48VNKAAk4QIrNyhNpmoPPtwxkg3GdpDZM23D25rU9bfwaobjLxoTQeQqLvlcG3qYnnvJykHnY6m4xQ==
+
+get-pty-output-linux-arm-gnueabihf@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/get-pty-output-linux-arm-gnueabihf/-/get-pty-output-linux-arm-gnueabihf-0.6.2.tgz#589177334f88692cb7ef2be9956a3358ed726961"
+  integrity sha512-w1gVMmMa0oix+n4T9GCX/QZLHdyDn445m7xBUU9UMh3tXBXWHGXcM0KHcxaPkGcl9TZ7bC3TDUA85GqbP1VkZg==
+
+get-pty-output-linux-arm64-gnu@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/get-pty-output-linux-arm64-gnu/-/get-pty-output-linux-arm64-gnu-0.6.2.tgz#a63c8d2f2a66f489effc6fae1de0b21c5c95ee75"
+  integrity sha512-Ix9Bf7RpKCwdLj71z6ZCUhmXLXmor67bspK5GL8h8ihbxf/eTmzZ7NKhHc13kN0i+XAH4nAZFNMjGV9kyYUrDw==
+
+get-pty-output-linux-arm64-musl@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/get-pty-output-linux-arm64-musl/-/get-pty-output-linux-arm64-musl-0.6.2.tgz#ed3f59c807a3ccf9facab1a98e6421a7d45bf5b7"
+  integrity sha512-tJ0k/MsG31mP9WgxtsHb9UPgDsy4jmMGpnvyuZpTYMazOXhyYXWAZ3QvpyQD9279hz6IDqamKcPdnxDy7WZ5Cw==
+
+get-pty-output-linux-x64-gnu@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/get-pty-output-linux-x64-gnu/-/get-pty-output-linux-x64-gnu-0.6.2.tgz#a8e5821f98a67e3066c30f67b013de0a64cdfcf4"
+  integrity sha512-BCRvkHgTsVkaPKx2PkSh8y4qctioE/mz9fJi8fFi2zPGQilW5yJK2X876DCz3peAYzO3eOo4lVJxx5FMrs3Iaw==
+
+get-pty-output-linux-x64-musl@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/get-pty-output-linux-x64-musl/-/get-pty-output-linux-x64-musl-0.6.2.tgz#a30405b99c2dabea9ce8a01e9850b964a09c9500"
+  integrity sha512-oagK7WTJ8LsjNOB8kdiidBRD4GVEeSeu3KqthTkiu4Ej9VQCRkEJ8sBHQ0wX/jQfECkw1TlcO6962D/k5NZGjQ==
+
+get-pty-output-win32-x64-msvc@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/get-pty-output-win32-x64-msvc/-/get-pty-output-win32-x64-msvc-0.6.2.tgz#cecdd59c9f74842dd2c90ee3747b6fbad361f630"
+  integrity sha512-rZAetaV4p/xmbCt3RbH4PM2+56vNdJBHjOdjwbDGDEvVk5Y0XFUHyKMsFDj84+iRsWZGjmMIF1m6NR0VWO2uew==
+
 get-stream@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/get-stream/-/get-stream-4.1.0.tgz#c1b255575f3dc21d59bfc79cd3d2b46b1c3a54b5"
