@@ -13,4 +13,6 @@ function execPromise(cmd, opts) {
 }
 
 module.exports.exec = execPromise
-module.exports.execSync = execSync
+module.exports.execSync = function (cmd, opts) {
+  return execSync(cmd, opts || {})
+}
