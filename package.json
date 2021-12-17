@@ -108,16 +108,5 @@
     "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
-  },
-  "optionalDependencies": {
-    "get-pty-output-darwin-arm64": "0.6.2",
-    "get-pty-output-darwin-x64": "0.6.2",
-    "get-pty-output-freebsd-x64": "0.6.2",
-    "get-pty-output-linux-arm-gnueabihf": "0.6.2",
-    "get-pty-output-linux-arm64-gnu": "0.6.2",
-    "get-pty-output-linux-arm64-musl": "0.6.2",
-    "get-pty-output-linux-x64-gnu": "0.6.2",
-    "get-pty-output-linux-x64-musl": "0.6.2",
-    "get-pty-output-win32-x64-msvc": "0.6.2"
   }
 }
