@@ -21,7 +21,7 @@ yarn add get-pty-output
 ## Usage
 
 ```ts
-import { exec } from 'get-pty-output'
+import { exec, execSync } from 'get-pty-output'
 
 const res = await exec('node -e console.log(100)')
 res.output // in color! ✨
@@ -36,12 +36,13 @@ exec(cmd, {
 })
 ```
 
-## Publishing (note for self)
+## Publishing
 
 * Remove all optional deps
+* Bump version if needed
+* Run `prepare-release`
 * Push or manually start CI workflow
 * Download CI artifacts and put them under ./npm in their respective directory
-* Bump version if needed
 * Run `npm publish`
 
 ## Credits & Thanks

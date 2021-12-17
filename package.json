@@ -1,6 +1,6 @@
 {
   "name": "get-pty-output",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "Execute an external command with a PTY, from Node ",
   "main": "index.js",
   "repository": "git@github.com:CyriacBr/get-pty-output.git",
@@ -45,6 +45,7 @@
     "format:prettier": "prettier . -w",
     "format:rs": "cargo fmt",
     "lint": "eslint . -c ./.eslintrc.yml --fix && cargo clippy",
+    "prepare-release": "napi create-npm-dir -t .",
     "prepublishOnly": "napi prepublish -t npm --skip-gh-release",
     "test": "tape -r @swc-node/register ./__test__/**/*.spec.ts",
     "version": "napi version"
@@ -109,14 +110,14 @@
     "arrowParens": "always"
   },
   "optionalDependencies": {
-    "get-pty-output-win32-x64-msvc": "0.6.2",
-    "get-pty-output-darwin-x64": "0.6.2",
-    "get-pty-output-linux-x64-gnu": "0.6.2",
-    "get-pty-output-linux-arm-gnueabihf": "0.6.2",
-    "get-pty-output-linux-x64-musl": "0.6.2",
-    "get-pty-output-linux-arm64-gnu": "0.6.2",
     "get-pty-output-darwin-arm64": "0.6.2",
+    "get-pty-output-darwin-x64": "0.6.2",
     "get-pty-output-freebsd-x64": "0.6.2",
-    "get-pty-output-linux-arm64-musl": "0.6.2"
+    "get-pty-output-linux-arm-gnueabihf": "0.6.2",
+    "get-pty-output-linux-arm64-gnu": "0.6.2",
+    "get-pty-output-linux-arm64-musl": "0.6.2",
+    "get-pty-output-linux-x64-gnu": "0.6.2",
+    "get-pty-output-linux-x64-musl": "0.6.2",
+    "get-pty-output-win32-x64-msvc": "0.6.2"
   }
 }
