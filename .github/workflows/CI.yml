@@ -232,6 +232,8 @@ jobs:
           - '14'
           - '16'
     runs-on: ${{ matrix.settings.host }}
+    env:
+      WINDOWS_CI: 'true'
     steps:
       - uses: actions/checkout@v2
       - name: Setup node
