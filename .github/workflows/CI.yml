@@ -365,7 +365,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: ghcr.io/napi-rs/napi-rs/nodejs:aarch64-${{ matrix.node }}
-          options: '-v ${{ github.workspace }}:/build -w /build'
+          options: '-t -v ${{ github.workspace }}:/build -w /build'
           run: |
             set -e
             yarn test
@@ -397,7 +397,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: multiarch/alpine:aarch64-latest-stable
-          options: '-v ${{ github.workspace }}:/build -w /build'
+          options: '-t -v ${{ github.workspace }}:/build -w /build'
           run: |
             set -e
             apk add nodejs npm yarn
@@ -436,7 +436,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: ghcr.io/napi-rs/napi-rs/nodejs:armhf-${{ matrix.node }}
-          options: '-v ${{ github.workspace }}:/build -w /build'
+          options: '-t -v ${{ github.workspace }}:/build -w /build'
           run: |
             set -e
             yarn test
