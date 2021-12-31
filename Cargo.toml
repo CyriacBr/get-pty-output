@@ -12,6 +12,7 @@ crate-type = ["cdylib"]
 [dependencies]
 napi = { version = "2.0.0-beta.5", features = ["full"] }
 napi-derive = "2.0.0-beta.5"
+regex = "1.5.4"
 
 [target.'cfg(windows)'.dependencies]
 conpty = "0.2.1"

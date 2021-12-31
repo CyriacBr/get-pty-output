@@ -443,6 +443,13 @@ ansi-styles@^6.0.0:
   resolved "https://registry.npmjs.org/ansi-styles/-/ansi-styles-6.1.0.tgz#87313c102b8118abd57371afab34618bf7350ed3"
   integrity sha512-VbqNsoz55SYGczauuup0MFUyXNQviSpFTj1RQtFzmQLk18qbVSpTFFGMT293rmDaQuKCT6InmbuEyUne4mTuxQ==
 
+ansi-to-html@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.npmjs.org/ansi-to-html/-/ansi-to-html-0.7.2.tgz#a92c149e4184b571eb29a0135ca001a8e2d710cb"
+  integrity sha512-v6MqmEpNlxF+POuyhKkidusCHWWkaLcGRURzivcU3I9tv7k4JVhFcnukrM5Rlk2rUywdZuzYAZ+kbZqWCnfN3g==
+  dependencies:
+    entities "^2.2.0"
+
 anymatch@~3.1.2:
   version "3.1.2"
   resolved "https://registry.npmjs.org/anymatch/-/anymatch-3.1.2.tgz#c0557c096af32f106198f4f4e2a383537e378716"
@@ -1151,6 +1158,11 @@ enquirer@^2.3.5, enquirer@^2.3.6:
   dependencies:
     ansi-colors "^4.1.1"
 
+entities@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/entities/-/entities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
+  integrity sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==
+
 equal-length@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/equal-length/-/equal-length-1.0.1.tgz#21ca112d48ab24b4e1e7ffc0e5339d31fdfc274c"
@@ -1582,50 +1594,50 @@ get-package-type@^0.1.0:
   resolved "https://registry.yarnpkg.com/get-package-type/-/get-package-type-0.1.0.tgz#8de2d803cff44df3bc6c456e6668b36c3926e11a"
   integrity sha512-pjzuKtY64GYfWizNAJ0fr9VqttZkNiK2iS430LtIHzjBEr6bX8Am2zm4sW4Ro5wjWW5cAlRL1qAMTcXbjNAO2Q==
 
-get-pty-output-darwin-arm64@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/get-pty-output-darwin-arm64/-/get-pty-output-darwin-arm64-0.6.2.tgz#d47525d9b3ac1aa970214e0eb46768407b00c80a"
-  integrity sha512-cTinWiBhmp07E1FCHGg8KJMEpPgfb2G/kullpv7X8zLAbJYd00xU1w2apnWyaexRBtDiE1oZPk5aAdIIYPfNcQ==
+get-pty-output-darwin-arm64@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/get-pty-output-darwin-arm64/-/get-pty-output-darwin-arm64-0.8.0.tgz#05727e1f5f3f6cbd14144818f4b17d03f62d15ca"
+  integrity sha512-J783K+vg6wkj0+7NzDeeN0gUjjWceE6XiBr9uBw4r3wd/EYuiRTbpm0hM84UBNg6xXjsKudJ3fUretR9Hkc3Jg==
 
-get-pty-output-darwin-x64@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/get-pty-output-darwin-x64/-/get-pty-output-darwin-x64-0.6.2.tgz#7698b4494227cd7ab48c6dfa167b94be3cd6dcb6"
-  integrity sha512-aTo8Cl9ymlflJ2UEWGCWoJnznRa7mSb8Iv7NXKELo/ttubVRoc8Yr9HNf140Z23jrOx/C7NVVVEDx68XtgOByw==
+get-pty-output-darwin-x64@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/get-pty-output-darwin-x64/-/get-pty-output-darwin-x64-0.8.0.tgz#4461042acfbb69fee5e7a0354f60627744984d6f"
+  integrity sha512-muJLxveCaZuBAzgOOT8UEU2o3POVJ2G+eav8qTl9aZlX9YTFDWMikhNgUG6rJTZf4vtr+qLob+P2jDnV1jMl8w==
 
-get-pty-output-freebsd-x64@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/get-pty-output-freebsd-x64/-/get-pty-output-freebsd-x64-0.6.2.tgz#6d4923f4fe8c4d4b1d009ddb8436a65329c38aaf"
-  integrity sha512-TNw/ynV/48VNKAAk4QIrNyhNpmoPPtwxkg3GdpDZM23D25rU9bfwaobjLxoTQeQqLvlcG3qYnnvJykHnY6m4xQ==
+get-pty-output-freebsd-x64@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/get-pty-output-freebsd-x64/-/get-pty-output-freebsd-x64-0.8.0.tgz#48b7052ef29b72e3d9dc7a9f1fddf2217a50d90a"
+  integrity sha512-UoN4c+wQBtuV8DkcX99XLQBVNIz/rb6uJKCKWYX6GhZZFJxTXl4r/ZR8ybXrpPreT2dc1TdgpuWfspCVrzatEQ==
 
-get-pty-output-linux-arm-gnueabihf@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/get-pty-output-linux-arm-gnueabihf/-/get-pty-output-linux-arm-gnueabihf-0.6.2.tgz#589177334f88692cb7ef2be9956a3358ed726961"
-  integrity sha512-w1gVMmMa0oix+n4T9GCX/QZLHdyDn445m7xBUU9UMh3tXBXWHGXcM0KHcxaPkGcl9TZ7bC3TDUA85GqbP1VkZg==
+get-pty-output-linux-arm-gnueabihf@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/get-pty-output-linux-arm-gnueabihf/-/get-pty-output-linux-arm-gnueabihf-0.8.0.tgz#79b4f090ddbe796b39da3a045848b22a021cf26f"
+  integrity sha512-C5DsVwF1tTszr+11l/w5j48/74fflVs2aRQHfMuB4IqII98pbP2RN0lJtXdKcXmjY7V93euBFgwbaHTK405oEQ==
 
-get-pty-output-linux-arm64-gnu@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/get-pty-output-linux-arm64-gnu/-/get-pty-output-linux-arm64-gnu-0.6.2.tgz#a63c8d2f2a66f489effc6fae1de0b21c5c95ee75"
-  integrity sha512-Ix9Bf7RpKCwdLj71z6ZCUhmXLXmor67bspK5GL8h8ihbxf/eTmzZ7NKhHc13kN0i+XAH4nAZFNMjGV9kyYUrDw==
+get-pty-output-linux-arm64-gnu@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/get-pty-output-linux-arm64-gnu/-/get-pty-output-linux-arm64-gnu-0.8.0.tgz#77539309c0cbdb302c50074775474d3066238705"
+  integrity sha512-XNbalKRO0mkZPocpCgCyT2sp5pn6bBPNgcOgSRVDYfDdKmw7dhM2r+k/m6Nlh/GEt5iVi7DpkOcfniD4kIiZPQ==
 
-get-pty-output-linux-arm64-musl@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/get-pty-output-linux-arm64-musl/-/get-pty-output-linux-arm64-musl-0.6.2.tgz#ed3f59c807a3ccf9facab1a98e6421a7d45bf5b7"
-  integrity sha512-tJ0k/MsG31mP9WgxtsHb9UPgDsy4jmMGpnvyuZpTYMazOXhyYXWAZ3QvpyQD9279hz6IDqamKcPdnxDy7WZ5Cw==
+get-pty-output-linux-arm64-musl@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/get-pty-output-linux-arm64-musl/-/get-pty-output-linux-arm64-musl-0.8.0.tgz#cd118066e0fb6f39472c7eaffca1b84149e7e1e8"
+  integrity sha512-3HiJQYt7ZJ9WcH8MXLYVbjAKa9l3trrJbrx2zl81xbXujOyxfUpGJcvkKgVsgeUNDHqnTHOf7wqoCQqK6ShmiQ==
 
-get-pty-output-linux-x64-gnu@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/get-pty-output-linux-x64-gnu/-/get-pty-output-linux-x64-gnu-0.6.2.tgz#a8e5821f98a67e3066c30f67b013de0a64cdfcf4"
-  integrity sha512-BCRvkHgTsVkaPKx2PkSh8y4qctioE/mz9fJi8fFi2zPGQilW5yJK2X876DCz3peAYzO3eOo4lVJxx5FMrs3Iaw==
+get-pty-output-linux-x64-gnu@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/get-pty-output-linux-x64-gnu/-/get-pty-output-linux-x64-gnu-0.8.0.tgz#3021a7965c84c499b885fc506c0022c909688537"
+  integrity sha512-4v52UsNh44Oza+WHstm2GBzQ27AIaHpTyiYBw4tzUiPTujWCwkL8J7ZTZ7tQoffxn6HI0MyDDQrqlyyapBp2tw==
 
-get-pty-output-linux-x64-musl@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/get-pty-output-linux-x64-musl/-/get-pty-output-linux-x64-musl-0.6.2.tgz#a30405b99c2dabea9ce8a01e9850b964a09c9500"
-  integrity sha512-oagK7WTJ8LsjNOB8kdiidBRD4GVEeSeu3KqthTkiu4Ej9VQCRkEJ8sBHQ0wX/jQfECkw1TlcO6962D/k5NZGjQ==
+get-pty-output-linux-x64-musl@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/get-pty-output-linux-x64-musl/-/get-pty-output-linux-x64-musl-0.8.0.tgz#6f19d98af2e0f00a2612c295d47930079476f5ab"
+  integrity sha512-HwqR6UTp5iURP7MOgtF6fNQisJ6wjpyyu6WlW4tS6ALEZmCNYEoaao/xWn2RmeTtuiMSVo9jpOpLbYLOJ9C6RQ==
 
-get-pty-output-win32-x64-msvc@0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/get-pty-output-win32-x64-msvc/-/get-pty-output-win32-x64-msvc-0.6.2.tgz#cecdd59c9f74842dd2c90ee3747b6fbad361f630"
-  integrity sha512-rZAetaV4p/xmbCt3RbH4PM2+56vNdJBHjOdjwbDGDEvVk5Y0XFUHyKMsFDj84+iRsWZGjmMIF1m6NR0VWO2uew==
+get-pty-output-win32-x64-msvc@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/get-pty-output-win32-x64-msvc/-/get-pty-output-win32-x64-msvc-0.8.0.tgz#d4605d704acdad786d4e505a89e840aa09c200d3"
+  integrity sha512-T5KWssy3/U8pKOyLNQ8YnxREsQgKty8WtcqYesa8CcKedXGH3JyShheKco8IAX462aFHbK9IYBm1POZspmmIKA==
 
 get-stream@^4.1.0:
   version "4.1.0"

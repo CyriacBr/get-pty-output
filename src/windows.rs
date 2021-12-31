@@ -5,13 +5,13 @@ use std::io::BufReader;
 use crate::common;
 
 #[cfg(windows)]
-pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
-  let timeout: u32 = match data.options.timeout {
+pub fn spawn_cmd(&data: common::Data) -> Option<common::Result> {
+  let timeout: u32 = match &data.options.timeout {
     Some(v) => v,
     _ => 10,
   };
-  let cwd: String = match data.options.cwd {
-    Some(v) => v,
+  let cwd: String = match &data.options.cwd {
+    Some(v) => String::from(v),
     _ => std::env::current_dir()
       .unwrap()
       .to_str()
@@ -19,7 +19,7 @@ pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
       .to_string(),
   };
 
-  let proc_attr = conpty::ProcAttr::cmd(data.cmd);
+  let proc_attr = conpty::ProcAttr::cmd(&data.cmd);
   let proc_attr = proc_attr.current_dir(cwd);
   let proc = proc_attr.spawn().unwrap();
   let mut raw_reader = proc.output().unwrap();
@@ -41,10 +41,10 @@ pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
       _ => break,
     }
   }
-  let output = lines.join("\n");
+  let output = common::transform_output(&lines.join("\n"), &data.options);
 
   if status == 0 || truncated {
-    match data.callback {
+    match &data.callback {
       Some(cb) => {
         cb.call(
           Ok((output, truncated)),
@@ -55,7 +55,7 @@ pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
       _ => Some(common::Result { output, truncated }),
     }
   } else {
-    match data.callback {
+    match &data.callback {
       Some(cb) => {
         cb.call(
           Err(Error::new(Status::Unknown, output)),

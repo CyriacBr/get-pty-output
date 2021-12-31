@@ -26,7 +26,7 @@ pub fn exec(cmd: String, opts: common::Options, callback: JsFunction) -> Result<
   };
 
   thread::spawn(move || {
-    spawn_cmd(data);
+    spawn_cmd(&data);
   });
 
   Ok(())
@@ -40,5 +40,5 @@ pub fn exec_sync(cmd: String, opts: common::Options) -> Option<common::Result> {
     options: opts,
   };
 
-  spawn_cmd(data)
+  spawn_cmd(&data)
 }

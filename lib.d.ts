@@ -10,6 +10,7 @@ export interface Options {
   timeout?: number | undefined | null
   idleTimeout?: number | undefined | null
   cwd?: string | undefined | null
+  purify?: boolean | undefined | null
 }
 export interface Result {
   output: string

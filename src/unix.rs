@@ -14,7 +14,7 @@ enum ReaderStatus {
 }
 
 #[cfg(not(windows))]
-pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
+pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
   use portable_pty::{native_pty_system, CommandBuilder, PtySize};
   use std::time::Instant;
 
@@ -26,8 +26,8 @@ pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
     Some(v) => v,
     _ => 5,
   };
-  let cwd: String = match data.options.cwd {
-    Some(v) => v,
+  let cwd: String = match &data.options.cwd {
+    Some(v) => String::from(v),
     _ => std::env::current_dir()
       .unwrap()
       .to_str()
@@ -105,10 +105,10 @@ pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
     }
   }
 
-  let output = lines.join("\n");
+  let output = common::transform_output(&lines.join("\n"), &data.options);
 
   if success || truncated {
-    match data.callback {
+    match &data.callback {
       Some(cb) => {
         cb.call(
           Ok((output, truncated)),
@@ -119,7 +119,7 @@ pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
       _ => Some(common::Result { output, truncated }),
     }
   } else {
-    match data.callback {
+    match &data.callback {
       Some(cb) => {
         cb.call(
           Err(Error::new(Status::Unknown, output)),

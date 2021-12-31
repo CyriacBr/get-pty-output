@@ -56,6 +56,11 @@ if (!process.env.WINDOWS_CI) {
     t.is(res.truncated, true)
   })
 
+  test('purify option works', async (t) => {
+    const res = await exec('node ./stdout-update', { purify: true, cwd })
+    t.is(res.output.trim(), '\x1B[32m✔\x1B[39m Loading unicorns')
+  })
+
   test('errors are handled', async (t) => {
     try {
       await exec('node ./doesnt-exist', { cwd })

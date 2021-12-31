@@ -10,6 +10,13 @@ export interface Options {
    */
   idleTimeout?: number | undefined | null
   cwd?: string | undefined | null
+  /**
+   * Remove cursor transformations from the output.
+   * Defaults to true. You may disable this if you notice your output is weirdly truncated.
+   * If the command you're executing transforms the terminal cursor (spinners, progress bars, etc),
+   * you likely want to keep this to true
+   */
+  purify?: boolean | undefined | null
 }
 
 export interface ReturnType {
