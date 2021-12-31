@@ -31,19 +31,36 @@ res.output // in color! ✨
 
 ```ts
 exec(cmd, {
-  timeout: 10, //output will be truncated after 10 seconds, regardless of whether the child finished or not
   cwd: 'path-to-desired-wd',
+  /**
+   * Close the pty after a timeout.
+   */
+  timeout: 10,
+  /**
+   * Close the pty after a timeout since the command became idle.
+   * A command is considered idle when it has stopped writing on stdout.
+   * Only works on UNIX platforms for now.
+   */
+  idleTimeout: 5,
+  /**
+   * Remove cursor transformations from the output.
+   * Defaults to true. You may disable this if you notice your output is weirdly truncated.
+   * If the command you're executing transforms the terminal cursor (spinners, progress bars, etc),
+   * you likely want to keep this to true
+   */
+  purify: true
 })
 ```
+Output is truncated when a timeout happens. `res.truncated; // true`
 
 ## Publishing
 
-* Remove all optional deps
-* Bump version if needed
-* Run `prepare-release`
-* Push or manually start CI workflow
-* Download CI artifacts and put them under ./npm in their respective directory
-* Run `npm publish`
+- Remove all optional deps
+- Bump version if needed
+- Run `prepare-release`
+- Push or manually start CI workflow
+- Download CI artifacts and put them under ./npm in their respective directory
+- Run `npm publish`
 
 ## Credits & Thanks
 

@@ -5,7 +5,7 @@ export interface Options {
   timeout?: number | undefined | null
   /**
    * Close the pty after a timeout since the command became idle.
-   * A command is considered idle when it has stopped printing on stdout.
+   * A command is considered idle when it has stopped writing on stdout.
    * Only works on UNIX platforms for now.
    */
   idleTimeout?: number | undefined | null
