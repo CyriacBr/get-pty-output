@@ -1,7 +1,5 @@
-export interface Options {
-  timeout?: number | undefined | null
-  cwd?: string | undefined | null
-}
+import { Options } from './lib'
+
 export interface ReturnType {
   output: string
   truncated: boolean

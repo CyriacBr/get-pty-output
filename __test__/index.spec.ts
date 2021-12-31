@@ -51,8 +51,8 @@ if (!process.env.WINDOWS_CI) {
     t.is(res.truncated, true)
   })
 
-  test('timeout works even for hanging processs', async (t) => {
-    const res = await exec('node ./hanging', { timeout: 2, cwd })
+  test('idle_timeout works', async (t) => {
+    const res = await exec('node ./hanging', { idleTimeout: 2, cwd })
     t.is(res.truncated, true)
   })
 

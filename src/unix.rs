@@ -22,6 +22,10 @@ pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
     Some(v) => v,
     _ => 10,
   };
+  let idle_timeout: u32 = match data.options.idle_timeout {
+    Some(v) => v,
+    _ => 5,
+  };
   let cwd: String = match data.options.cwd {
     Some(v) => v,
     _ => std::env::current_dir()
@@ -82,7 +86,7 @@ pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
   });
 
   loop {
-    match receiver.recv_timeout(Duration::from_secs(timeout as u64)) {
+    match receiver.recv_timeout(Duration::from_secs(idle_timeout as u64)) {
       Err(_) => {
         truncated = true;
         child.kill().unwrap();

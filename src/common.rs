@@ -10,6 +10,7 @@ pub struct Data {
 #[napi(object)]
 pub struct Options {
   pub timeout: Option<u32>,
+  pub idle_timeout: Option<u32>,
   pub cwd: Option<String>,
 }
 

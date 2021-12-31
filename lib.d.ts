@@ -8,6 +8,7 @@ export class ExternalObject<T> {
 }
 export interface Options {
   timeout?: number | undefined | null
+  idleTimeout?: number | undefined | null
   cwd?: string | undefined | null
 }
 export interface Result {

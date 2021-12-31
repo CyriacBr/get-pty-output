@@ -3,7 +3,7 @@
 const { exec, execSync } = require('./lib')
 
 console.log('[exec] before')
-exec('node ./__test__/long-running-cmd', { timeout: 5 }, (err, res) => {
+exec('node ./__test__/hanging', { timeout: 5, idleTimeout: 2 }, (err, res) => {
   console.log('err :>> ', err)
   console.log('res :>> ', res)
   console.log('res.output :>> ', res?.output)
