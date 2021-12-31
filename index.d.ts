@@ -1,4 +1,16 @@
-import { Options } from './lib'
+export interface Options {
+  /**
+   * Close the pty after a timeout.
+   */
+  timeout?: number | undefined | null
+  /**
+   * Close the pty after a timeout since the command became idle.
+   * A command is considered idle when it has stopped printing on stdout.
+   * Only works on UNIX platforms for now.
+   */
+  idleTimeout?: number | undefined | null
+  cwd?: string | undefined | null
+}
 
 export interface ReturnType {
   output: string
