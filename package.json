@@ -1,6 +1,6 @@
 {
   "name": "get-pty-output",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Execute an external command with a PTY, from Node ",
   "main": "index.js",
   "repository": "git@github.com:CyriacBr/get-pty-output.git",
@@ -108,5 +108,16 @@
     "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
+  },
+  "optionalDependencies": {
+    "get-pty-output-win32-x64-msvc": "0.8.0",
+    "get-pty-output-darwin-x64": "0.8.0",
+    "get-pty-output-linux-x64-gnu": "0.8.0",
+    "get-pty-output-linux-arm-gnueabihf": "0.8.0",
+    "get-pty-output-linux-x64-musl": "0.8.0",
+    "get-pty-output-linux-arm64-gnu": "0.8.0",
+    "get-pty-output-darwin-arm64": "0.8.0",
+    "get-pty-output-freebsd-x64": "0.8.0",
+    "get-pty-output-linux-arm64-musl": "0.8.0"
   }
 }
