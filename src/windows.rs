@@ -5,8 +5,8 @@ use std::io::BufReader;
 use crate::common;
 
 #[cfg(windows)]
-pub fn spawn_cmd(&data: common::Data) -> Option<common::Result> {
-  let timeout: u32 = match &data.options.timeout {
+pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
+  let timeout: u32 = match data.options.timeout {
     Some(v) => v,
     _ => 10,
   };

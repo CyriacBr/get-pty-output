@@ -22,7 +22,7 @@ pub struct Result {
   pub truncated: bool,
 }
 
-pub fn transform_output(output: &String, opts: &Options) -> String {
+pub fn transform_output(output: &str, opts: &Options) -> String {
   match opts.purify {
     Some(true) | None => {
       /*
@@ -44,7 +44,7 @@ pub fn transform_output(output: &String, opts: &Options) -> String {
         .unwrap()
         .replace_all(&result, "")
         .to_string();
-      return result;
+      result
     }
     Some(false) => String::from(output),
   }

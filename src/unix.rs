@@ -63,7 +63,7 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
 
   let now = Instant::now();
   let mut success = false;
-  let mut truncated = false;
+  let truncated: bool;
   let mut lines = Vec::<String>::new();
 
   let (sender, receiver) = mpsc::channel();
@@ -73,16 +73,16 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
     for ln in reader.lines() {
       match ln {
         Ok(v) => {
-          sender.send(ReaderStatus::Line(v));
+          sender.send(ReaderStatus::Line(v)).ok();
         }
         _ => break,
       }
       if now.elapsed().as_secs() >= (timeout as u64) {
-        sender.send(ReaderStatus::Done(true));
+        sender.send(ReaderStatus::Done(true)).ok();
         break;
       }
     }
-    sender.send(ReaderStatus::Done(false));
+    sender.send(ReaderStatus::Done(false)).ok();
   });
 
   loop {
