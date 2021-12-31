@@ -1,8 +1,17 @@
 use napi::{bindgen_prelude::*, threadsafe_function::*};
 use std::io::prelude::*;
 use std::io::BufReader;
+use std::sync::mpsc;
+use std::thread;
+use std::time::Duration;
 
 use crate::common;
+
+enum ReaderStatus {
+  Line(String),
+  // truncated?
+  Done(bool),
+}
 
 #[cfg(not(windows))]
 pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
@@ -49,25 +58,52 @@ pub fn spawn_cmd(data: common::Data) -> Option<common::Result> {
   drop(pair.master);
 
   let now = Instant::now();
+  let mut success = false;
   let mut truncated = false;
   let mut lines = Vec::<String>::new();
-  let reader = BufReader::new(box_reader);
 
-  for ln in reader.lines() {
-    match ln {
-      Ok(v) => lines.push(v),
-      _ => break,
+  let (sender, receiver) = mpsc::channel();
+  let handle = thread::spawn(move || {
+    let reader = BufReader::new(box_reader);
+
+    for ln in reader.lines() {
+      match ln {
+        Ok(v) => {
+          sender.send(ReaderStatus::Line(v));
+        }
+        _ => break,
+      }
+      if now.elapsed().as_secs() >= (timeout as u64) {
+        sender.send(ReaderStatus::Done(true));
+        break;
+      }
     }
-    if now.elapsed().as_secs() >= (timeout as u64) {
-      truncated = true;
-      break;
+    sender.send(ReaderStatus::Done(false));
+  });
+
+  loop {
+    match receiver.recv_timeout(Duration::from_secs(timeout as u64)) {
+      Err(_) => {
+        truncated = true;
+        child.kill().unwrap();
+        drop(receiver);
+        drop(handle);
+        break;
+      }
+      Ok(ReaderStatus::Line(v)) => {
+        lines.push(v);
+      }
+      Ok(ReaderStatus::Done(v)) => {
+        truncated = v;
+        success = child.wait().unwrap().success();
+        break;
+      }
     }
   }
 
   let output = lines.join("\n");
-  let status = child.wait().unwrap();
 
-  if status.success() || truncated {
+  if success || truncated {
     match data.callback {
       Some(cb) => {
         cb.call(
