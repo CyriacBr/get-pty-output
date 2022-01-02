@@ -27,20 +27,19 @@ pub fn transform_output(output: &str, opts: &Options) -> String {
     Some(true) | None => {
       /*
        * handle clear line/screen ANSI codes:
-       * \x1B[{n}K
-       * \x1B[{n}J
+       * \x1B[{n}[JKG]
        */
-      let result = Regex::new(r".*\x1B\[[12][KJ]")
+      let result = Regex::new(r"[\s\S]*\x1B\[\d*[KJG]")
         .unwrap()
         .replace_all(output, "")
         .to_string();
       /*
        * handle cursor movement ANSI codes:
-       * \x1B[?25h
+       * \x1B[?25[hl]
        * \x1B[{n}[ABCDEFG]
        * \x1B[{n};{m}H
        */
-      let result = Regex::new(r"(\x1B\[\?25h)|(\x1B\[\d[ABCDEFG])|(\x1B\[\d;\dH)")
+      let result = Regex::new(r"(\x1B\[\?25[hl])|(\x1B\[\d[ABCDEFG])|(\x1B\[\d;\dH)")
         .unwrap()
         .replace_all(&result, "")
         .to_string();
