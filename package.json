@@ -57,7 +57,6 @@
     "@types/tape": "^4.13.2",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
-    "ansi-to-html": "^0.7.2",
     "ava": "^3.15.0",
     "benny": "^3.7.1",
     "chalk": "^5.0.0",

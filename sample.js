@@ -1,5 +1,4 @@
 /* eslint-disable */
-const AnsiToHTML = require('ansi-to-html')
 const { exec, execSync } = require('./lib')
 
 console.log('[exec] before')
@@ -7,9 +6,6 @@ exec('node ./__test__/stdout-update', {}, (err, res) => {
   console.log('err :>> ', err)
   console.log('res :>> ', res)
   console.log('res.output :>> ', res?.output || '')
-
-  const converter = new AnsiToHTML();
-  console.log(converter.toHtml(res?.output || ''));
 })
 console.log('[exec] after')
 
