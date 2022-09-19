@@ -6,18 +6,17 @@ use crate::common;
 
 #[cfg(windows)]
 pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
-  let timeout: u32 = match data.options.timeout {
-    Some(v) => v,
-    _ => 10,
-  };
-  let cwd: String = match &data.options.cwd {
-    Some(v) => String::from(v),
-    _ => std::env::current_dir()
-      .unwrap()
-      .to_str()
-      .unwrap()
-      .to_string(),
-  };
+  let timeout: u32 = data.options.timeout.unwrap_or(10);
+  let cwd: String = data.options.cwd.as_ref().map_or_else(
+    || {
+      std::env::current_dir()
+        .unwrap()
+        .to_str()
+        .unwrap()
+        .to_string()
+    },
+    |v| v.to_string(),
+  );
 
   let proc_attr = conpty::ProcAttr::cmd(&data.cmd);
   let proc_attr = proc_attr.current_dir(cwd);
@@ -47,7 +46,7 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
       _ => break,
     }
   }
-  let output = common::transform_output(&lines.join("\n"), &data.options);
+  let output = common::transform_output(&lines.join("\n"), &data.options).to_string();
 
   if status == 0 || truncated {
     match &data.done_callback {

@@ -18,22 +18,18 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
   use portable_pty::{native_pty_system, CommandBuilder, PtySize};
   use std::time::Instant;
 
-  let timeout: u32 = match data.options.timeout {
-    Some(v) => v,
-    _ => 10,
-  };
-  let idle_timeout: u32 = match data.options.idle_timeout {
-    Some(v) => v,
-    _ => 5,
-  };
-  let cwd: String = match &data.options.cwd {
-    Some(v) => String::from(v),
-    _ => std::env::current_dir()
-      .unwrap()
-      .to_str()
-      .unwrap()
-      .to_string(),
-  };
+  let timeout: u32 = data.options.timeout.unwrap_or(10);
+  let idle_timeout: u32 = data.options.idle_timeout.unwrap_or(5);
+  let cwd: String = data.options.cwd.as_ref().map_or_else(
+    || {
+      std::env::current_dir()
+        .unwrap()
+        .to_str()
+        .unwrap()
+        .to_string()
+    },
+    |v| v.to_string(),
+  );
 
   let pty_system = native_pty_system();
   let pair = pty_system
@@ -109,7 +105,7 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
     }
   }
 
-  let output = common::transform_output(&lines.join("\n"), &data.options);
+  let output = common::transform_output(&lines.join("\n"), &data.options).to_string();
 
   if success || truncated {
     match &data.done_callback {

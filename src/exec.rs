@@ -9,7 +9,12 @@ use crate::unix::*;
 use crate::windows::*;
 
 #[napi]
-pub fn exec(cmd: String, opts: common::Options, stream_callback: Option<JsFunction>, done_callback: JsFunction) -> Result<()> {
+pub fn exec(
+  cmd: String,
+  opts: common::Options,
+  stream_callback: Option<JsFunction>,
+  done_callback: JsFunction,
+) -> Result<()> {
   let data = common::Data {
     done_callback: Some(create_done_thradsafe_function(&done_callback)?),
     on_data_callback: if let Some(on_data) = stream_callback {
@@ -29,7 +34,11 @@ pub fn exec(cmd: String, opts: common::Options, stream_callback: Option<JsFuncti
 }
 
 #[napi]
-pub fn exec_sync(cmd: String, opts: common::Options, stream_callback: Option<JsFunction>) -> Result<Option<common::Result>> {
+pub fn exec_sync(
+  cmd: String,
+  opts: common::Options,
+  stream_callback: Option<JsFunction>,
+) -> Result<Option<common::Result>> {
   let data = common::Data {
     done_callback: None,
     on_data_callback: if let Some(on_data) = stream_callback {
@@ -53,7 +62,6 @@ fn create_done_thradsafe_function(callback: &JsFunction) -> Result<DoneThreadsaf
     })
   })
 }
-
 
 fn create_data_thradsafe_function(callback: JsFunction) -> Result<OnDataThreadsafeFn> {
   callback.create_threadsafe_function(0, |ctx: ThreadSafeCallContext<String>| {

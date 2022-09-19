@@ -1,4 +1,6 @@
-use napi::{threadsafe_function::*};
+use std::borrow::Cow;
+
+use napi::threadsafe_function::*;
 use napi_derive::napi;
 use regex::Regex;
 
@@ -26,29 +28,27 @@ pub struct Result {
   pub truncated: bool,
 }
 
-pub fn transform_output(output: &str, opts: &Options) -> String {
+lazy_static::lazy_static! {
+  static ref CLEAR_REGEX: Regex = Regex::new(r"[\s\S]*\x1B\[\d*[KJG]").unwrap();
+  static ref CURSOR_REGEX: Regex = Regex::new(r"(\x1B\[\?25[hl])|(\x1B\[\d[ABCDEFG])|(\x1B\[\d;\dH)").unwrap();
+}
+pub fn transform_output<'a>(output: &'a str, opts: &Options) -> Cow<'a, str> {
   match opts.purify {
     Some(true) | None => {
       /*
        * handle clear line/screen ANSI codes:
        * \x1B[{n}[JKG]
        */
-      let result = Regex::new(r"[\s\S]*\x1B\[\d*[KJG]")
-        .unwrap()
-        .replace_all(output, "")
-        .to_string();
+      let result = CLEAR_REGEX.replace_all(output, "").to_string();
       /*
        * handle cursor movement ANSI codes:
        * \x1B[?25[hl]
        * \x1B[{n}[ABCDEFG]
        * \x1B[{n};{m}H
        */
-      let result = Regex::new(r"(\x1B\[\?25[hl])|(\x1B\[\d[ABCDEFG])|(\x1B\[\d;\dH)")
-        .unwrap()
-        .replace_all(&result, "")
-        .to_string();
-      result
+      let result = CURSOR_REGEX.replace_all(&result, "").to_string();
+      Cow::from(result)
     }
-    Some(false) => String::from(output),
+    Some(false) => Cow::from(output),
   }
 }
