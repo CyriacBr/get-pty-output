@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-const ora = require('ora')
+const ora = require("ora");
 
-const spinner = ora('Loading unicorns').start()
+const spinner = ora("Loading unicorns").start();
 setTimeout(() => {
-  spinner.succeed()
-}, 500)
+  spinner.succeed();
+}, 500);

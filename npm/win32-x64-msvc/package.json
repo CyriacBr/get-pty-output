@@ -11,15 +11,15 @@
   "files": [
     "get-pty-output.win32-x64-msvc.node"
   ],
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10"
+  },
   "description": "Execute an external command with a PTY, from Node ",
   "keywords": [
     "node",
     "pty"
   ],
-  "license": "MIT",
-  "engines": {
-    "node": ">= 10"
-  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"

@@ -3,7 +3,11 @@
   "version": "0.8.2",
   "description": "Execute an external command with a PTY, from Node ",
   "main": "index.js",
-  "repository": "git@github.com:CyriacBr/get-pty-output.git",
+  "types": "index.d.ts",
+  "napi": {
+    "name": "get-pty-output",
+    "triples": {}
+  },
   "license": "MIT",
   "keywords": [
     "node",
@@ -15,98 +19,34 @@
     "lib.d.ts",
     "lib.js"
   ],
-  "napi": {
-    "name": "get-pty-output",
-    "triples": {
-      "defaults": true,
-      "additional": [
-        "armv7-unknown-linux-gnueabihf",
-        "x86_64-unknown-linux-musl",
-        "aarch64-unknown-linux-gnu",
-        "aarch64-apple-darwin",
-        "x86_64-unknown-freebsd",
-        "aarch64-unknown-linux-musl"
-      ]
-    }
-  },
-  "engines": {
-    "node": ">= 10"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
-  "scripts": {
-    "artifacts": "napi artifacts",
-    "bench": "node -r @swc-node/register benchmark/bench.ts",
-    "build": "napi build --platform --release --js lib.js --dts lib.d.ts",
-    "build:debug": "napi build --platform --js lib.js --dts lib.d.ts",
-    "format": "run-p format:prettier format:rs",
-    "format:prettier": "prettier . -w",
-    "format:rs": "cargo fmt",
-    "lint": "eslint . -c ./.eslintrc.yml --fix && cargo clippy",
-    "prepare-release": "napi create-npm-dir -t .",
-    "prepublishOnly": "napi prepublish -t npm --skip-gh-release",
-    "test": "tape -r @swc-node/register ./__test__/**/*.spec.ts",
-    "version": "napi version"
-  },
   "devDependencies": {
-    "@napi-rs/cli": "^2.0.0-beta.5",
+    "@napi-rs/cli": "^2.11.4",
     "@swc-node/register": "^1.4.0",
     "@types/node": "^16.11.12",
     "@types/tape": "^4.13.2",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
-    "ava": "^3.15.0",
-    "benny": "^3.7.1",
-    "chalk": "^5.0.0",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
-    "npm-run-all": "^4.1.5",
     "ora": "5",
-    "prettier": "^2.5.1",
+    "prettier": "^2.7.1",
     "tap-spec": "^5.0.0",
     "tape": "^5.3.2",
-    "typescript": "^4.5.3"
+    "typescript": "^4.8.3"
   },
-  "dependencies": {
-    "@node-rs/helper": "^1.2.1"
+  "engines": {
+    "node": ">= 10"
   },
-  "lint-staged": {
-    "*.@(js|ts|tsx)": [
-      "prettier --write",
-      "eslint -c .eslintrc.yml --fix"
-    ],
-    "*.@(yml|yaml)": [
-      "prettier --parser yaml --write"
-    ],
-    "*.md": [
-      "prettier --parser markdown --write"
-    ],
-    "*.json": [
-      "prettier --parser json --write"
-    ]
+  "scripts": {
+    "artifacts": "napi artifacts",
+    "build": "napi build --platform --release --js lib.js --dts lib.d.ts",
+    "build:debug": "napi build --platform",
+    "prepublishOnly": "napi prepublish -t npm",
+    "test": "tape -r @swc-node/register ./__test__/**/*.spec.ts",
+    "version": "napi version",
+    "lint": "eslint . -c ./.eslintrc.yml --fix && cargo clippy"
   },
-  "ava": {
-    "require": [
-      "@swc-node/register"
-    ],
-    "extensions": [
-      "ts"
-    ],
-    "environmentVariables": {
-      "TS_NODE_PROJECT": "./tsconfig.json"
-    }
-  },
-  "prettier": {
-    "printWidth": 120,
-    "semi": false,
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "always"
-  }
+  "packageManager": "yarn@3.2.3"
 }

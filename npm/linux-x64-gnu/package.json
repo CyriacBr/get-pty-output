@@ -20,6 +20,9 @@
   "engines": {
     "node": ">= 10"
   },
+  "libc": [
+    "glibc"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"

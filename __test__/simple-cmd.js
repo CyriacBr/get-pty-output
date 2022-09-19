@@ -1,2 +1,2 @@
 /* eslint-disable no-console */
-console.log('hello world')
+console.log("hello world");
