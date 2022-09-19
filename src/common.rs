@@ -1,9 +1,13 @@
-use napi::threadsafe_function::*;
+use napi::{threadsafe_function::*};
 use napi_derive::napi;
 use regex::Regex;
 
+pub type DoneThreadsafeFn = ThreadsafeFunction<(String, bool), ErrorStrategy::CalleeHandled>;
+pub type OnDataThreadsafeFn = ThreadsafeFunction<String, ErrorStrategy::CalleeHandled>;
+
 pub struct Data {
-  pub callback: Option<ThreadsafeFunction<(String, bool), ErrorStrategy::CalleeHandled>>,
+  pub done_callback: Option<DoneThreadsafeFn>,
+  pub on_data_callback: Option<OnDataThreadsafeFn>,
   pub cmd: String,
   pub options: Options,
 }

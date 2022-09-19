@@ -95,7 +95,11 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
         break;
       }
       Ok(ReaderStatus::Line(v)) => {
-        lines.push(v);
+        if let Some(cb) = &data.on_data_callback {
+          cb.call(Ok(v), ThreadsafeFunctionCallMode::Blocking);
+        } else {
+          lines.push(v);
+        }
       }
       Ok(ReaderStatus::Done(v)) => {
         truncated = v;
@@ -108,7 +112,7 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
   let output = common::transform_output(&lines.join("\n"), &data.options);
 
   if success || truncated {
-    match &data.callback {
+    match &data.done_callback {
       Some(cb) => {
         cb.call(
           Ok((output, truncated)),
@@ -119,7 +123,7 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
       _ => Some(common::Result { output, truncated }),
     }
   } else {
-    match &data.callback {
+    match &data.done_callback {
       Some(cb) => {
         cb.call(
           Err(Error::new(Status::Unknown, output)),

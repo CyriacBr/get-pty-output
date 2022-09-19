@@ -1,8 +1,10 @@
 /* eslint-disable */
 const { exec, execSync } = require('./lib')
 
+const onData = (_, line) => console.log('line :>> ', line);
+
 console.log('[exec] before')
-exec('node ./__test__/stdout-update', {}, (err, res) => {
+exec('node ./__test__/long-running-cmd', {}, onData, (err, res) => {
   console.log('err :>> ', err)
   console.log('res :>> ', res)
   console.log('res.output :>> ', res?.output || '')

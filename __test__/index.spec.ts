@@ -61,6 +61,14 @@ if (!process.env.WINDOWS_CI) {
     t.is(res.output.trim(), '\x1B[32m✔\x1B[39m Loading unicorns')
   })
 
+  test('onData option works', async (t) => {
+    const collected = [];
+    const onData = (line: string) => collected.push(line);
+    const res = await exec('node ./stream-test', { cwd, onData });
+    t.is(collected.length, 10);
+    t.notOk(res.output);
+  })
+
   test('errors are handled', async (t) => {
     try {
       await exec('node ./doesnt-exist', { cwd })

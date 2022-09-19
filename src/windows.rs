@@ -37,14 +37,20 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
   let reader = BufReader::new(raw_reader);
   for ln in reader.lines() {
     match ln {
-      Ok(v) => lines.push(v),
+      Ok(v) => {
+        if let Some(cb) = &data.on_data_callback {
+          cb.call(Ok(v), ThreadsafeFunctionCallMode::Blocking);
+        } else {
+          lines.push(v);
+        }
+      }
       _ => break,
     }
   }
   let output = common::transform_output(&lines.join("\n"), &data.options);
 
   if status == 0 || truncated {
-    match &data.callback {
+    match &data.done_callback {
       Some(cb) => {
         cb.call(
           Ok((output, truncated)),
@@ -55,7 +61,7 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
       _ => Some(common::Result { output, truncated }),
     }
   } else {
-    match &data.callback {
+    match &data.done_callback {
       Some(cb) => {
         cb.call(
           Err(Error::new(Status::Unknown, output)),

@@ -17,6 +17,13 @@ export interface Options {
    * you likely want to keep this to true
    */
   purify?: boolean | undefined | null
+  /**
+   * A callback that is invoked while the process is running, similarly to
+   * `child_process.stdout.on('data', cb)`
+   *
+   * **Note that when using this option, no output will be returned!**
+   */
+  onData?: (line: string) => void
 }
 
 export interface ReturnType {

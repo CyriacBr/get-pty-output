@@ -1,8 +1,9 @@
 const { exec, execSync } = require('./lib')
 
 function execPromise(cmd, opts) {
+  const onData = (opts || {}).onData ? (err_, line) => opts.onData(line) : null
   return new Promise((resolve, reject) => {
-    exec(cmd, opts || {}, (err, res) => {
+    exec(cmd, opts || {}, onData, (err, res) => {
       if (err) {
         reject(err)
       } else {

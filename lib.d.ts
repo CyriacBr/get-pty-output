@@ -7,14 +7,14 @@ export class ExternalObject<T> {
   }
 }
 export interface Options {
-  timeout?: number | undefined | null
-  idleTimeout?: number | undefined | null
-  cwd?: string | undefined | null
-  purify?: boolean | undefined | null
+  timeout?: number
+  idleTimeout?: number
+  cwd?: string
+  purify?: boolean
 }
 export interface Result {
   output: string
   truncated: boolean
 }
-export function exec(cmd: string, opts: Options, callback: (...args: any[]) => any): void
-export function execSync(cmd: string, opts: Options): any | undefined | null
+export function exec(cmd: string, opts: Options, streamCallback: (...args: any[]) => any | undefined | null, doneCallback: (...args: any[]) => any): void
+export function execSync(cmd: string, opts: Options, streamCallback?: (...args: any[]) => any | undefined | null): any | null
