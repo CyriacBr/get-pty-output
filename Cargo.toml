@@ -12,12 +12,7 @@ napi = { version = "2.7.0", default-features = false, features = ["napi4"] }
 napi-derive = "2.7.0"
 regex = "1.5.4"
 lazy_static = "1"
-
-[target.'cfg(windows)'.dependencies]
-conpty = "0.2.1"
-
-[target.'cfg(not(windows))'.dependencies]
-portable-pty = "0.7.0"
+portable-pty = { git = "https://github.com/wez/wezterm.git" }
 shellwords = "1.1.0"
 
 [target.'cfg(all(any(windows, unix), target_arch = "x86_64", not(target_env = "musl")))'.dependencies]

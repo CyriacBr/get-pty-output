@@ -5,7 +5,7 @@ extern crate napi_derive;
 
 mod common;
 mod exec;
-#[cfg(not(windows))]
+// #[cfg(not(windows))]
 mod unix;
-#[cfg(windows)]
-mod windows;
+// #[cfg(windows)]
+// mod windows;

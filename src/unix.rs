@@ -13,7 +13,7 @@ enum ReaderStatus {
   Done(bool),
 }
 
-#[cfg(not(windows))]
+// #[cfg(not(windows))]
 pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
   use portable_pty::{native_pty_system, CommandBuilder, PtySize};
   use std::time::Instant;
@@ -41,7 +41,12 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
     })
     .expect("Failed to create PTY");
 
-  let args = shellwords::split(&data.cmd).unwrap();
+  let command_str = if cfg!(windows) {
+    "cmd /c ".to_owned() + &data.cmd
+  } else {
+    data.cmd.clone()
+  };
+  let args = shellwords::split(&command_str).unwrap();
   let mut cmd = CommandBuilder::from_argv(args.iter().map(std::ffi::OsString::from).collect());
   cmd.cwd(cwd);
 
@@ -55,7 +60,7 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
     .master
     .try_clone_reader()
     .expect("Failed to get reader");
-  drop(pair.master);
+  // drop(pair.master);
 
   let now = Instant::now();
   let mut success = false;
@@ -85,6 +90,7 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
     match receiver.recv_timeout(Duration::from_secs(idle_timeout as u64)) {
       Err(_) => {
         truncated = true;
+        drop(pair.master);
         child.kill().unwrap();
         drop(receiver);
         drop(handle);
@@ -99,6 +105,7 @@ pub fn spawn_cmd(data: &common::Data) -> Option<common::Result> {
       }
       Ok(ReaderStatus::Done(v)) => {
         truncated = v;
+        drop(pair.master);
         success = child.wait().unwrap().success();
         break;
       }

@@ -3,10 +3,10 @@ use napi_derive::napi;
 use std::thread;
 
 use crate::common::{self, DoneThreadsafeFn, OnDataThreadsafeFn};
-#[cfg(not(windows))]
+// #[cfg(not(windows))]
 use crate::unix::*;
-#[cfg(windows)]
-use crate::windows::*;
+// #[cfg(windows)]
+// use crate::windows::*;
 
 #[napi]
 pub fn exec(
